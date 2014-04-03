@@ -1,3 +1,3 @@
 #Unexpected Crab
 
-A cpp project with no goals
+A ~~cpp~~ any language project with no goals
