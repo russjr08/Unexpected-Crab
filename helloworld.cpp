@@ -7,10 +7,10 @@ using namespace std;
 // argv -- array of char arrays
 // returns status
 int main(int argc, char const *argv[]) {
-	MyObject obj = new MyObject("Hello World!!");
+	MyObject* obj = new MyObject("Hello World!!");
 
 	cout << "attempting to turn it off on and on again" << endl;
-	cout << obj.getTestString() << endl;
+	cout << obj->getTestString() << endl;
 	cout << "primary expression Kappa" << endl;
 	for(int i = 0; i < argc; i++) {
 		cout << argv[i] << endl; //DONE
