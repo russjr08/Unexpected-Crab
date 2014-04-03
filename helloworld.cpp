@@ -1,4 +1,5 @@
 #include <iostream>
+#include "MyObject.h"
 
 using namespace std;
 
@@ -6,9 +7,10 @@ using namespace std;
 // argv -- array of char arrays
 // returns status
 int main(int argc, char const *argv[]) {
-	
-	cout << "attempting to turn it off on and on again" << endl;
+	MyObject* obj = new MyObject(new string("Hello World!!"));
 
+	cout << "attempting to turn it off on and on again" << endl;
+	cout << *(obj->getTestString()) << endl;
 	cout << "primary expression Kappa" << endl;
 	for(int i = 0; i < argc; i++) {
 		cout << argv[i] << endl; //DONE
