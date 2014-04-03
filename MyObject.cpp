@@ -1,15 +1,12 @@
 #import "MyObject.h"
 using namespace std;
 
-	string testString;
-	MyObject::MyObject(std::string test){
+string testString;
+MyObject::MyObject(std::string test){
+	this->testString = test;
+}
 
-		this->testString = test;
-	}
-
-	string MyObject::getTestString(){
-
-		return this->testString;
-
-	}
+string MyObject::getTestString(){
+	return this->testString;
+}
 
