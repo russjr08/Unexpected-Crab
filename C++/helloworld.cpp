@@ -1,5 +1,6 @@
 #include <iostream>
 #include "MyObject.h"
+#include "Person.h"
 
 using namespace std;
 
@@ -8,7 +9,9 @@ using namespace std;
 // returns status
 int main(int argc, char const *argv[]) {
 	MyObject* obj = new MyObject(new string("Hello World!!"));
+	Person* person = new Person(new string("Russ"), 17, Person::MALE);
 
+	cout << "Hello. My name is: " << person->getName() << endl;
 	cout << "attempting to turn it off on and on again" << endl;
 	cout << *(obj->getTestString()) << endl;
 	cout << "primary expression Kappa" << endl;
