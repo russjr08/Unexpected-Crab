@@ -31,7 +31,7 @@ int main(char[][] args){
 			writeln("ls: List the files in the current directory.");
 			writeln("russ: Russjr08. 'nuff said.");
 			writeln("read: Display the contents of a file. (buggy)");
-			writeln("crab: Display project information.");
+			writeln("crab: An alias for the info command.");
 			writeln("info: Display project's README.md.");
 			writeln("exit: Exit the program.");
 		} else if (cmp(cmd, "cd") == 0) {
@@ -73,12 +73,7 @@ int main(char[][] args){
 			}
 			
 		} else if (cmp(cmd, "crab") == 0) {
-			writeln("");
-			writeln("Unexpected Crab");
-			writeln("---------------");
-			writeln("An any language project with no goals.");
-			writeln("Version: " ~ projectVersion);
-			writeln("");
+			writeln("\n" ~ processMarkdown(readme));
 		} else if (cmp(cmd, "info") == 0) {
 			writeln("\n" ~ processMarkdown(readme));
 		} else if (cmd.indexOf(" ") > -1) {
