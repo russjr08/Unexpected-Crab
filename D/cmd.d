@@ -7,7 +7,6 @@ import std.algorithm;
 import std.net.curl;
 
 int main(char[][] args){
-	writeln("Downloading version.txt...");
 	string cmd;
 	string currentDirectory = to!string(getcwd());
 	auto http = HTTP();
@@ -37,7 +36,7 @@ int main(char[][] args){
 		} else if (cmp(cmd, "ls") == 0) {
 			try {
 				string[] files;
-				int longestFileName = 0;
+				ulong longestFileName = 0;
 				foreach(string filename; dirEntries(currentDirectory, SpanMode.shallow)) {
 					string fileName = baseName(filename);
 					if(fileName.length > longestFileName) {
@@ -56,7 +55,7 @@ int main(char[][] args){
 					string fileName = baseName(filename);
 					index++;
 					string spaces = "";
-					for(int i = fileName.length; i < longestFileName + 1; i++) {
+					for(ulong i = fileName.length; i < longestFileName + 1; i++) {
 						spaces ~= " ";
 					}
 					write(fileName ~ spaces);
