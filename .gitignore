@@ -1,4 +1,4 @@
 hello
 *.swp
-cmd.exe
-cmd.obj
+*.exe
+*.obj
