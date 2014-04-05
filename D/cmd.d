@@ -33,6 +33,7 @@ int main(char[][] args){
 			writeln("read: Display the contents of a file. (buggy)");
 			writeln("crab: An alias for the info command.");
 			writeln("info: Display project's README.md.");
+			writeln("mkdir: Create a directory.");
 			writeln("exit: Exit the program.");
 		} else if (cmp(cmd, "cd") == 0) {
 			writeln(currentDirectory);
@@ -87,7 +88,24 @@ int main(char[][] args){
 				} else {
 					writeln("'" ~ arg ~ "' doesn't exist.");
 				}
-			} if(cmp(label, "cd") == 0){
+			} else if(cmp(label, "mkdir") == 0){
+
+				if (!exists(buildPath(currentDirectory, arg))) {
+					try {
+						mkdir(buildPath(currentDirectory, arg));
+					} catch (Exception ex) {
+						writeln("Couldn't create the directory.");
+					}
+				} else if(!exists(arg)) {
+					try {
+						mkdir(arg);
+					} catch (Exception ex) {
+						writeln("Couldn't create the directory.");
+					}
+				} else {
+					writeln("'" ~ arg ~ "' already exist.");
+				}
+			} else if(cmp(label, "cd") == 0){
 				if(cmp(arg, "..") == 0 || cmp(arg, "../") == 0) {
 					if(endsWith(currentDirectory, "/")) {
 						currentDirectory = currentDirectory[0 .. currentDirectory.length - 1];
@@ -152,4 +170,8 @@ string processMarkdown(string markdown){
 		result ~= addLine ~ "\n";
 	}
 	return result;
+}
+
+void loge(string msg) {
+	writeln(msg);
 }
