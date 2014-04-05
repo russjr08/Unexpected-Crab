@@ -1,7 +1,7 @@
 #include "Person.h"
 
 
-Person::Person(string name, int age, Gender gender){
+Person::Person(string name, int age, Person::Gender gender){
 	this->name = name;
 	this->age = age;
 	this->gender = gender;
