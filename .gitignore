@@ -1,2 +1,4 @@
 hello
 *.swp
+*.exe
+*.obj
