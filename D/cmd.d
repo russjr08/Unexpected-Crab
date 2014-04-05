@@ -2,6 +2,7 @@ import std.stdio;
 import std.string;
 import std.file;
 import std.path;
+import std.array;
 import std.conv;
 import std.algorithm;
 import std.net.curl;
@@ -12,6 +13,7 @@ int main(char[][] args){
 	auto http = HTTP();
 	http.caInfo("cacert.pem");
 	string projectVersion = to!string(get("https://raw.github.com/russjr08/Unexpected-Crab/master/version.txt", http));
+	string readme = to!string(get("https://raw.githubusercontent.com/russjr08/Unexpected-Crab/master/README.md", http));
 
 	writeln("Welcome to GlitchyPrompt!");
 	write(currentDirectory ~ " $ ");
@@ -30,6 +32,7 @@ int main(char[][] args){
 			writeln("russ: Russjr08. 'nuff said.");
 			writeln("read: Display the contents of a file. (buggy)");
 			writeln("crab: Display project information.");
+			writeln("info: Display project's README.md.");
 			writeln("exit: Exit the program.");
 		} else if (cmp(cmd, "cd") == 0) {
 			writeln(currentDirectory);
@@ -76,6 +79,8 @@ int main(char[][] args){
 			writeln("An any language project with no goals.");
 			writeln("Version: " ~ projectVersion);
 			writeln("");
+		} else if (cmp(cmd, "info") == 0) {
+			writeln("\n" ~ processMarkdown(readme));
 		} else if (cmd.indexOf(" ") > -1) {
 			string label = cmd[0 .. cmd.indexOf(" ")];
 			string arg = cmd[cmd.indexOf(" ") + 1 .. cmd.length];
@@ -132,4 +137,24 @@ int main(char[][] args){
 	}
 
 	return 0;
+}
+
+string processMarkdown(string markdown){
+	string[] lines = splitLines(markdown);
+	string result = "";
+	foreach(string line; lines) {
+		string addLine = line;
+		if(addLine.startsWith("#")) {
+			addLine = addLine[1 .. addLine.length];
+			addLine ~= "\n----------------";
+		}
+		if(line.indexOf("~~") != -1) {
+			while(addLine.indexOf("  ") != -1) {
+				replace(addLine, "  ", " ");
+			}
+			addLine = addLine[0 .. line.indexOf("~~")] ~ addLine[line.lastIndexOf("~~") + 2 .. addLine.length];
+		}
+		result ~= addLine ~ "\n";
+	}
+	return result;
 }
