@@ -100,7 +100,6 @@ int main(char[][] args){
 					} else if(currentDirectory.indexOf("\\") != -1) {
 						currentDirectory = currentDirectory[0 .. lastIndexOf(currentDirectory, "\\")];
 					}
-					currentDirectory ~= "\\";
 				} else if(cmp(arg, ".") == 0 || cmp(arg, "./") == 0) {
 					currentDirectory = currentDirectory; //lol
 				} else {
