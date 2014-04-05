@@ -99,7 +99,7 @@ def ui(rootwin):
 
 def main():
     global player
-    player = Player(input("What is your name?\n> "))
+    player = Player(raw_input("What is your name?\n> "))
     curses.wrapper(ui)
 
 if __name__ == '__main__':
