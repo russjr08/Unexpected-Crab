@@ -1,0 +1,12 @@
+- Tokens to represent players
+- Implement properties
+- Implement Chance and Community Chest cards
+- AI for computer based players
+- ASCII art for the game board
+- Two di
+
+
+# Eventually...
+
+- Multiplayer
+- Port to 2D?
