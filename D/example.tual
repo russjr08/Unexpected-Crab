@@ -1,0 +1,12 @@
+out Hello.
+out Creating a block...
+
+#Create a block
+block test_block
+	#This won't be called until the gotoblock part of the file.
+	out Within a block :O
+endblock
+
+out Block test_block created.
+out Calling block test_block.
+gotoblock test_block
