@@ -15,6 +15,7 @@ namespace Store
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Store - A Text Based Game Created By Null For Unexpected Crab :>"); // Prompt
             Console.ResetColor();
+            int openstorenum = 0;
             int workernum = 0;
             int currencytotal = 500; //default currency total
             string currency = " USD";
@@ -23,6 +24,16 @@ namespace Store
             while (true) // Loop indefinitely
             {
                 string line = Console.ReadLine(); // Get string from user
+
+                if (currencytotal < -200)
+                {
+                    Console.WriteLine("YOU HAVE EXCEEDED THE MAXIMUM AMOUNT OF DEBT");
+                    Console.WriteLine("YOUR STORE WILL NOW AUTOMATICALLY CLOSE IN 5 SECONDS");
+                    Thread.Sleep(5000);
+
+                    Console.Clear();
+                    return;
+                }
 
                 if (line == "help")
                 {
@@ -73,12 +84,27 @@ namespace Store
 
                 if (line == "open store")
                 {
+                    ++openstorenum;
                     Random timeofday = new Random();
                     Random moneyofday = new Random();
                     int moneyadded = moneyofday.Next(69, 420) * workernum;
                     int currencyafterday = moneyadded + currencytotal;
                     Console.WriteLine(storename + " has been opened! (loading your days results in 10 seconds)");
                     Thread.Sleep(10000);
+
+                    if (openstorenum > 10)
+                    {
+                        moneyadded = moneyofday.Next(690, 4200);
+                    }
+                    if (openstorenum > 100)
+                    {
+                        moneyadded = moneyofday.Next(6900, 42000);
+                    }
+                    if (openstorenum > 1000)
+                    {
+                        Console.WriteLine("You've beaten the game");
+                        Console.Clear();
+                    }
 
                     if (moneyadded == 0)
                     {
@@ -96,13 +122,14 @@ namespace Store
 
                 if (line == "close store")
                 {
-                    Console.WriteLine("Are you sure you want to close your store? If so, your store will be deleted (rip) :(");
+                    Console.WriteLine("Are you sure you want to close your store? If so, your store will be deleted :(");
                     string userInput = Console.ReadLine();
 
                     if (userInput == "yes")
                     {
                         Console.WriteLine("rip in pizza");
                         Console.Clear();
+                        return;
                     }
                     else
                     {
