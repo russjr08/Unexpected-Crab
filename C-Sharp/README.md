@@ -3,5 +3,7 @@
 -Created by null <3
 
 Things to do:
-Create new "special customer" feature!
-Create expanding customer base!
+<ul>
+<li>Create new "special customer" feature!</li>
+<li>Create expanding customer base!</li>
+</ul>
