@@ -65,7 +65,8 @@ void processLine(string line, int lineNumber, string fileName){
 			args = strip(args);
 			if(args.indexOf(" ") > -1) {
 				string name = args[0..args.indexOf(" ")];
-				string message = args[args.indexOf(" ")..args.length];
+				string message = args[args.indexOf(" ")+1..args.length];
+				message = strip(message);
 				
 				foreach(m; match(message, r"@(\S+)")){
 					string word = m.hit;
