@@ -75,8 +75,10 @@ int main(char[][] args){
 			
 		} else if (cmp(cmd, "crab") == 0) {
 			writeln("\n" ~ processMarkdown(readme));
+            writeln("Version: " ~ projectVersion);
 		} else if (cmp(cmd, "info") == 0) {
 			writeln("\n" ~ processMarkdown(readme));
+            writeln("Version: " ~ projectVersion);
 		} else if (cmd.indexOf(" ") > -1) {
 			string label = cmd[0 .. cmd.indexOf(" ")];
 			string arg = cmd[cmd.indexOf(" ") + 1 .. cmd.length];
