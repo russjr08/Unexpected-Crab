@@ -1,8 +1,3 @@
-/*
-	This will only run on Windows, most likely!
-	Changes will have to be made for Linux/OSX support.
-*/
-
 import std.stdio;
 import std.string;
 import std.file;
